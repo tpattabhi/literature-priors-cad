@@ -6,6 +6,7 @@ the complete cases used in transfer.py (age, sex, chest-pain type, exercise angi
 Z-Alizadeh Sani: all 303 patients (age, sex and chest-pain type only; extend.py).
 """
 
+import os
 from pathlib import Path
 
 import pandas as pd
@@ -33,6 +34,8 @@ COLUMNS = [
 
 def load(fname, complete=False):
     d = pd.read_csv(DATA / fname, header=None, names=COLUMNS, na_values="?")
+    if os.environ.get("UCI_CP_AS_DOCUMENTED") != "1":
+        d["cp"] = 5 - d["cp"]  # UCI stores chest pain in reverse order; see analysis.read_uci
     if complete:
         d = d.dropna(subset=["age", "sex", "cp", "exang", "oldpeak"])
     d["disease"] = (d["num"] > 0).astype(int)

@@ -270,7 +270,7 @@ SITE_SIZES = [25, 50, 100]
 
 
 def load_site(fname):
-    d = pd.read_csv(ac.HERE.parent / "data" / fname, header=None, names=ac.COLUMNS, na_values="?")
+    d = ac.read_uci(ac.HERE.parent / "data" / fname)
     d = d.dropna(subset=["age", "sex", "cp", "exang", "oldpeak"]).reset_index(drop=True)
     d["disease"] = (d["num"] > 0).astype(int)
     return d
@@ -432,9 +432,7 @@ def part_sites():
     out["ridge_failed"] = int(
         P.query("model == 'ridge'").groupby(["site", "n", "rep"]).loglik.apply(lambda v: v.isna().all()).sum()
     )
-    sw = pd.read_csv(
-        ac.HERE.parent / "data" / "processed.switzerland.data", header=None, names=ac.COLUMNS, na_values="?"
-    )
+    sw = ac.read_uci(ac.HERE.parent / "data" / "processed.switzerland.data")
     out["switzerland"] = {
         "n": int(len(sw)),
         "prevalence": float((sw.num > 0).mean()),

@@ -68,7 +68,22 @@ COLUMNS = [
     "thal",
     "num",
 ]
-raw = pd.read_csv(DATA, header=None, names=COLUMNS, na_values="?")
+# The UCI processed files store chest-pain type in the reverse of the documented order: their code 4 is
+# typical angina and code 1 is no pain. Detrano et al., Circulation 1986;73:970-977 (the same 303 patients)
+# reports Table 1 and Table 8 that reproduce exactly only with cp = 5 - code. Set UCI_CP_AS_DOCUMENTED=1 to
+# use the documented order instead (the analysis before this correction).
+CP_AS_DOCUMENTED = os.environ.get("UCI_CP_AS_DOCUMENTED") == "1"
+
+
+def read_uci(path):
+    """Read a UCI processed heart-disease file, with chest-pain type in clinical order (1 = typical angina)."""
+    d = pd.read_csv(path, header=None, names=COLUMNS, na_values="?")
+    if not CP_AS_DOCUMENTED:
+        d["cp"] = 5 - d["cp"]
+    return d
+
+
+raw = read_uci(DATA)
 raw["disease"] = (raw["num"] > 0).astype(int)
 
 train_raw, test_raw = train_test_split(raw, test_size=0.2, stratify=raw["disease"], random_state=SEED)
