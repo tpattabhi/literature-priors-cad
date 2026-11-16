@@ -45,7 +45,7 @@ This is a methods study that compares prior specifications. It does not develop 
 | 18c | Protocol | No protocol was prepared |
 | 18d | Registration | Not registered |
 | 18e | Data availability | Public: UCI Machine Learning Repository, doi:10.24432/C52P4X (CC BY 4.0); copies in `data/` |
-| 18f | Code availability | Sec. II-E (last sentence): available from the author. **AUTHOR**: replace with a repository link if one is published |
+| 18f | Code availability | Public repository https://github.com/tpattabhi/literature-priors-cad, cited in Sec. II-E (last sentence) |
 | 19 | Patient and public involvement | None |
 | 20a | Participant flow | Sec. II-A (303; 242 training, 61 test; 139 with CAD); Sec. II-E (complete cases at the new centers) |
 | 20b | Characteristics | Partly in the text (prevalence, sex counts); full table in `results/characteristics.csv` (`code/characteristics.py`); summarized below |
