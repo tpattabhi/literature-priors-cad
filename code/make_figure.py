@@ -63,6 +63,7 @@ for ax, where, title in [
             ls=ls,
             lw=1.2 if k == "M2" else 0.9,
             ms=3.6,
+            markerfacecolor="none" if k in ("M0b", "M2-CC") else col,
             label=k,
         )
     ax.set_xscale("log")
