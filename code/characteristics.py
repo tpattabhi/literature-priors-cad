@@ -70,12 +70,24 @@ cp = pd.Series(4.0, index=zas.index)
 cp[zas.Nonanginal.str.strip() == "Y"] = 3
 cp[zas.Atypical.str.strip() == "Y"] = 2
 cp[zas["Typical Chest Pain"].astype(float) == 1] = 1
-z = pd.DataFrame({"age": zas.Age.astype(float), "sex": (zas.Sex.str.strip() == "Male").astype(float), "cp": cp,
-                  "disease": (zas.Cath.str.strip() == "Cad").astype(int)})
+z = pd.DataFrame(
+    {
+        "age": zas.Age.astype(float),
+        "sex": (zas.Sex.str.strip() == "Male").astype(float),
+        "cp": cp,
+        "disease": (zas.Cath.str.strip() == "Cad").astype(int),
+    }
+)
 out = pd.DataFrame({k: describe(v) for k, v in cols.items()})
 zrow = describe(z.assign(exang=float("nan"), oldpeak=float("nan"), ca=float("nan"), thal=float("nan")))
-zrow.update({"exercise angina, n (%)": "not recorded", "ST depression mm, mean (SD)": "not recorded",
-             "fluoroscopy recorded, n": 0, "thallium recorded, n": 0})
+zrow.update(
+    {
+        "exercise angina, n (%)": "not recorded",
+        "ST depression mm, mean (SD)": "not recorded",
+        "fluoroscopy recorded, n": 0,
+        "thallium recorded, n": 0,
+    }
+)
 out["Z-Alizadeh Sani"] = pd.Series(zrow)
 out.to_csv(HERE.parent / "results" / "characteristics.csv")
 print(out.to_string())

@@ -511,9 +511,6 @@ def part_sites():
     print("sites done", out["runtime_min"], flush=True)
 
 
-
-
-
 def part_tehw():
     """Z-Alizadeh Sani with the weakly informative intercept prior N(0, 2.5^2) of M0 for M0b, M2 and M2-CC."""
     d = load_tehran()
@@ -543,8 +540,18 @@ def part_tehw():
             for k, (Xf, Xs, mu, sd, dc) in fits.items():
                 idata = T.fit(Xf, y, mu, sd, dc, 0.0, 2.5, seed, ac.LC_DRAWS, ac.LC_TUNE)
                 diags.append({"n": n_sub, "rep": r, "model": k, **diag(idata)})
-                pts.append(pd.DataFrame({"site": "tehran", "n": n_sub, "rep": r, "model": k, "patient": rest,
-                                         "loglik": ac.pointwise_ll(ye, T.proba(idata, Xs))}))
+                pts.append(
+                    pd.DataFrame(
+                        {
+                            "site": "tehran",
+                            "n": n_sub,
+                            "rep": r,
+                            "model": k,
+                            "patient": rest,
+                            "loglik": ac.pointwise_ll(ye, T.proba(idata, Xs)),
+                        }
+                    )
+                )
             print(f"tehw n={n_sub} rep={r} ({(time.time() - START) / 60:.1f} min)", flush=True)
     pd.concat(pts).to_csv(RES / "ext_tehw_points.csv", index=False)
     pd.DataFrame(diags).to_csv(RES / "ext_tehw_diagnostics.csv", index=False)

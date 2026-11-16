@@ -35,26 +35,40 @@ def contrast(points, model, ref):
     est = float(np.nanmean(d.to_numpy().mean(axis=1) if not d.isna().any().any() else d.mean(axis=1)))
     per_rep = d.mean(axis=1)
     per_pat = d.mean(axis=0)
-    se_analytic = float(np.hypot(per_rep.std(ddof=1) / np.sqrt(len(per_rep)), per_pat.std(ddof=1) / np.sqrt(len(per_pat))))
+    se_analytic = float(
+        np.hypot(per_rep.std(ddof=1) / np.sqrt(len(per_rep)), per_pat.std(ddof=1) / np.sqrt(len(per_pat)))
+    )
     D = d.to_numpy()
     boots = np.empty(B)
     for i in range(B):
         r = RNG.integers(0, len(reps), len(reps))
         p = RNG.integers(0, len(pats), len(pats))
         boots[i] = np.nanmean(D[np.ix_(r, p)])
-    return {"estimate": float(per_rep.mean()), "se_analytic": se_analytic, "se_bootstrap": float(boots.std(ddof=1)),
-            "ci95": [float(np.quantile(boots, 0.025)), float(np.quantile(boots, 0.975))]}
+    return {
+        "estimate": float(per_rep.mean()),
+        "se_analytic": se_analytic,
+        "se_bootstrap": float(boots.std(ddof=1)),
+        "ci95": [float(np.quantile(boots, 0.025)), float(np.quantile(boots, 0.975))],
+    }
 
 
 def main():
     out = {}
-    cle = pd.concat([pd.read_csv(RES / f) for f in ["learning_curve_points.csv", "auto_rule_points.csv",
-                                                    "ext_cle_points.csv"]], ignore_index=True)
+    cle = pd.concat(
+        [pd.read_csv(RES / f) for f in ["learning_curve_points.csv", "auto_rule_points.csv", "ext_cle_points.csv"]],
+        ignore_index=True,
+    )
     sites = pd.concat([pd.read_csv(RES / f) for f in ["sites_points.csv", "ext_sites_points.csv"]], ignore_index=True)
-    cases = [("cle", 25, "test", "M2", "M0b"), ("cle", 25, "other_train", "M2", "M0b"),
-             ("cle", 25, "test", "M2CC", "M0b"), ("cle", 25, "other_train", "M2CC", "M0b"),
-             ("cle", 25, "test", "M2auto", "M0b"), ("cle", 25, "test", "M2check", "M0b"),
-             ("hungarian", 25, None, "M2CC", "M0b"), ("hungarian", 25, None, "M2", "M0b")]
+    cases = [
+        ("cle", 25, "test", "M2", "M0b"),
+        ("cle", 25, "other_train", "M2", "M0b"),
+        ("cle", 25, "test", "M2CC", "M0b"),
+        ("cle", 25, "other_train", "M2CC", "M0b"),
+        ("cle", 25, "test", "M2auto", "M0b"),
+        ("cle", 25, "test", "M2check", "M0b"),
+        ("hungarian", 25, None, "M2CC", "M0b"),
+        ("hungarian", 25, None, "M2", "M0b"),
+    ]
     for site, n, where, m, ref in cases:
         if site == "cle":
             pts = cle[(cle.n == n) & (cle.scored_on == where)]
@@ -75,8 +89,22 @@ def main():
     # the test outcomes, in the order used by analysis.py (patients 0..60)
     from sklearn.model_selection import train_test_split
 
-    cols = ["age", "sex", "cp", "trestbps", "chol", "fbs", "restecg", "thalach", "exang", "oldpeak", "slope", "ca",
-            "thal", "num"]
+    cols = [
+        "age",
+        "sex",
+        "cp",
+        "trestbps",
+        "chol",
+        "fbs",
+        "restecg",
+        "thalach",
+        "exang",
+        "oldpeak",
+        "slope",
+        "ca",
+        "thal",
+        "num",
+    ]
     raw = pd.read_csv(HERE.parent / "data" / "processed.cleveland.data", header=None, names=cols, na_values="?")
     raw["disease"] = (raw["num"] > 0).astype(int)
     _, test_raw = train_test_split(raw, test_size=0.2, stratify=raw["disease"], random_state=2026)
@@ -100,8 +128,14 @@ def main():
                 yy = test_y[pidx]
                 boots[i] = np.mean(nb(P[m][np.ix_(r, pidx)], yy, t) - nb(P["M0b"][np.ix_(r, pidx)], yy, t))
             f = (1 - t) / t * 100
-            rows.append({"threshold": float(t), "dNB": d_obs, "avoided_per_100": d_obs * f,
-                         "ci95": [float(np.quantile(boots, 0.025) * f), float(np.quantile(boots, 0.975) * f)]})
+            rows.append(
+                {
+                    "threshold": float(t),
+                    "dNB": d_obs,
+                    "avoided_per_100": d_obs * f,
+                    "ci95": [float(np.quantile(boots, 0.025) * f), float(np.quantile(boots, 0.975) * f)],
+                }
+            )
         dca[m] = rows
     out["dca_vs_M0b_n25"] = dca
     (RES / "robustness.json").write_text(json.dumps(out, indent=2))
