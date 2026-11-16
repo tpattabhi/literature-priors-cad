@@ -117,7 +117,7 @@ def conflict_t(b_mean, b_var, lit, prior_sd=0.5):
 
 
 def check_keep(lit, is_lit, m0_idata):
-    """Formal prior-predictive conflict check against the M0 posterior (approximate likelihood)."""
+    """Approximate prior-predictive conflict check against the M0 posterior (approximate likelihood)."""
     b = T.post(m0_idata, "beta")
     t = conflict_t(b.mean(0), b.var(0), lit)
     return is_lit & (np.abs(t) <= 1.96), t
@@ -558,5 +558,49 @@ def part_tehw():
     print("tehw done", (time.time() - START) / 60, flush=True)
 
 
+def part_kfix():
+    """M2 with the attenuation fixed at kappa = 0.25 or 1 (no learning), Cleveland learning-curve subsets with n = 25:
+    does the small-sample gain depend on the learned factor sitting near its prior mean of 0.5?"""
+    S = ac.SPECS["M2"]
+    Xtr, ytr, Xte, yte = ac.X_train, ac.y_train, ac.X_test, ac.y_test
+    rng = np.random.default_rng(ac.SEED + 1)
+    pts = []
+    for r in range(ac.LC_REPS):
+        idx = rng.choice(len(ytr), 25, replace=False)  # the first 25 draws are the n = 25 subsets of analysis.py
+        rest = np.setdiff1d(np.arange(len(ytr)), idx)
+        for kap in (0.25, 1.0):
+            mu = np.where(S.discount, kap * S.beta_mu, S.beta_mu)
+            idata = T.fit(
+                Xtr[idx],
+                ytr[idx],
+                mu,
+                S.beta_sd,
+                np.zeros(ac.K, bool),
+                A0,
+                ASD,
+                ac.SEED + 2500 + r,
+                ac.LC_DRAWS,
+                ac.LC_TUNE,
+            )
+            for where, Xe, ye, ids in [
+                ("test", Xte, yte, np.arange(len(yte))),
+                ("other_train", Xtr[rest], ytr[rest], rest),
+            ]:
+                pts.append(
+                    pd.DataFrame(
+                        {
+                            "n": 25,
+                            "rep": r,
+                            "model": f"M2k{kap}",
+                            "scored_on": where,
+                            "patient": ids,
+                            "loglik": ac.pointwise_ll(ye, T.proba(idata, Xe)),
+                        }
+                    )
+                )
+        print(f"kfix rep={r}", flush=True)
+    pd.concat(pts).to_csv(RES / "ext_kfix_points.csv", index=False)
+
+
 if __name__ == "__main__":
-    {"cle": part_cle, "sites": part_sites, "tehw": part_tehw}[sys.argv[1]]()
+    {"cle": part_cle, "sites": part_sites, "tehw": part_tehw, "kfix": part_kfix}[sys.argv[1]]()

@@ -30,6 +30,7 @@ uv run python transfer.py wideint     # wide intercept prior at Budapest and Lon
 uv run python extend.py cle           # CAD Consortium priors, M2-check, M2-h, decision curves at n = 25 (~46 min)
 uv run python extend.py sites         # the same at the three other centers, including Z-Alizadeh Sani (~170 min)
 uv run python extend.py tehw          # wide intercept prior at Z-Alizadeh Sani (~11 min)
+uv run python extend.py kfix          # attenuation fixed at 0.25 or 1, n = 25 (~4 min)
 uv run python robustness.py           # two-way bootstrap of SEs and decision-curve intervals
 uv run python characteristics.py      # patient characteristics by center
 uv run python make_figure.py          # Fig. 1
