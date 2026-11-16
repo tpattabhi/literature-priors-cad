@@ -1,0 +1,13 @@
+,"Cleveland, all","Cleveland, training","Cleveland, test",Hungarian (complete cases),Long Beach VA (complete cases),Z-Alizadeh Sani
+patients,303,242,61,293,144,303
+"CAD, n (%)",139 (46),111 (46),28 (46),106 (36),114 (79),216 (71)
+"age, mean (SD)",54.4 (9.0),54.1 (9.1),55.7 (8.9),47.8 (7.8),59.4 (7.9),58.9 (10.4)
+"male, n (%)",206 (68),165 (68),41 (67),213 (73),139 (97),176 (58)
+"typical angina, n (%)",23 (8),22 (9),1 (2),11 (4),3 (2),164 (54)
+"atypical angina, n (%)",50 (17),39 (16),11 (18),105 (36),7 (5),93 (31)
+"nonanginal pain, n (%)",86 (28),61 (25),25 (41),54 (18),28 (19),16 (5)
+"asymptomatic, n (%)",144 (48),120 (50),24 (39),123 (42),106 (74),30 (10)
+"exercise angina, n (%)",99 (33),80 (33),19 (31),89 (30),94 (65),not recorded
+"ST depression mm, mean (SD)",1.04 (1.16),1.04 (1.15),1.05 (1.21),0.58 (0.91),1.32 (1.11),not recorded
+"fluoroscopy recorded, n",299,238,61,3,2,0
+"thallium recorded, n",301,241,60,28,32,0

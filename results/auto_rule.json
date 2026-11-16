@@ -1,0 +1,102 @@
+{
+  "full": {
+    "kept": [
+      "male",
+      "any calcified vessel",
+      "extra calcified vessels",
+      "reversible thallium defect"
+    ],
+    "dropped": [
+      "age (per 10 y)",
+      "typical angina",
+      "atypical angina",
+      "non-anginal pain",
+      "ST depression (per mm)",
+      "fixed thallium defect"
+    ],
+    "c_mean": 0.5005479868008831,
+    "elpd_loo": -100.3641764313998,
+    "elpd_loo_M2": -100.13956427645974,
+    "test_loglik": -14.90097717761446,
+    "test_loglik_M2": -14.579165167822275,
+    "max_rhat": 1.0024676759192204,
+    "min_bulk_ess": 2737.5196047100067,
+    "divergences": 0
+  },
+  "subsets": {
+    "25": {
+      "mean_kept": 6.0,
+      "c_mean": 0.5980472549664797,
+      "keep_rate": {
+        "age (per 10 y)": 0.4,
+        "male": 0.88,
+        "typical angina": 0.36,
+        "atypical angina": 0.16,
+        "non-anginal pain": 0.08,
+        "ST depression (per mm)": 1.0,
+        "any calcified vessel": 0.84,
+        "extra calcified vessels": 0.76,
+        "fixed thallium defect": 0.52,
+        "reversible thallium defect": 1.0
+      },
+      "max_abs_M0b_regen_diff": 0.006873607610890953
+    },
+    "50": {
+      "mean_kept": 5.44,
+      "c_mean": 0.5480649707549179,
+      "keep_rate": {
+        "age (per 10 y)": 0.32,
+        "male": 0.96,
+        "typical angina": 0.16,
+        "atypical angina": 0.12,
+        "non-anginal pain": 0.04,
+        "ST depression (per mm)": 0.88,
+        "any calcified vessel": 0.96,
+        "extra calcified vessels": 0.6,
+        "fixed thallium defect": 0.44,
+        "reversible thallium defect": 0.96
+      },
+      "max_abs_M0b_regen_diff": 0.005619529016707148
+    },
+    "100": {
+      "mean_kept": 5.24,
+      "c_mean": 0.5343634891235509,
+      "keep_rate": {
+        "age (per 10 y)": 0.2,
+        "male": 1.0,
+        "typical angina": 0.0,
+        "atypical angina": 0.08,
+        "non-anginal pain": 0.0,
+        "ST depression (per mm)": 0.64,
+        "any calcified vessel": 1.0,
+        "extra calcified vessels": 0.84,
+        "fixed thallium defect": 0.48,
+        "reversible thallium defect": 1.0
+      },
+      "max_abs_M0b_regen_diff": 0.0021147833198454924
+    },
+    "200": {
+      "mean_kept": 4.16,
+      "c_mean": 0.518624456125684,
+      "keep_rate": {
+        "age (per 10 y)": 0.0,
+        "male": 1.0,
+        "typical angina": 0.0,
+        "atypical angina": 0.0,
+        "non-anginal pain": 0.0,
+        "ST depression (per mm)": 0.0,
+        "any calcified vessel": 1.0,
+        "extra calcified vessels": 0.92,
+        "fixed thallium defect": 0.36,
+        "reversible thallium defect": 0.88
+      },
+      "max_abs_M0b_regen_diff": 0.001213326358955935
+    }
+  },
+  "diag": {
+    "max_rhat": 1.0122421179797605,
+    "divergences": 0,
+    "n_fits": 101
+  },
+  "runtime_min": 21.22295869986216
+}

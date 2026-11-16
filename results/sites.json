@@ -1,0 +1,121 @@
+{
+  "hungarian": {
+    "n": 293,
+    "prevalence": 0.36177474402730375,
+    "cad_rate_by_cp": {
+      "1": [
+        0.36363636363636365,
+        11
+      ],
+      "2": [
+        0.0761904761904762,
+        105
+      ],
+      "3": [
+        0.2037037037037037,
+        54
+      ],
+      "4": [
+        0.6747967479674797,
+        123
+      ]
+    },
+    "literature_calculator_logloss_all": 0.9444502835780717,
+    "transported_logloss_all": 0.39885414747290915
+  },
+  "va": {
+    "n": 144,
+    "prevalence": 0.7916666666666666,
+    "cad_rate_by_cp": {
+      "1": [
+        1.0,
+        3
+      ],
+      "2": [
+        0.5714285714285714,
+        7
+      ],
+      "3": [
+        0.6785714285714286,
+        28
+      ],
+      "4": [
+        0.8301886792452831,
+        106
+      ]
+    },
+    "literature_calculator_logloss_all": 1.2612180131513844,
+    "transported_logloss_all": 0.484727019020807
+  },
+  "diag": {
+    "max_rhat": 1.0148660443692632,
+    "divergences": 0,
+    "fits_with_divergences": 0,
+    "n_fits": 900
+  },
+  "auto_keep_rate": {
+    "hungarian_25": {
+      "age (per 10 y)": 0.68,
+      "male": 0.88,
+      "typical angina": 0.48,
+      "atypical angina": 0.0,
+      "non-anginal pain": 0.12,
+      "ST depression (per mm)": 1.0
+    },
+    "hungarian_50": {
+      "age (per 10 y)": 0.72,
+      "male": 0.96,
+      "typical angina": 0.32,
+      "atypical angina": 0.0,
+      "non-anginal pain": 0.04,
+      "ST depression (per mm)": 1.0
+    },
+    "hungarian_100": {
+      "age (per 10 y)": 0.72,
+      "male": 1.0,
+      "typical angina": 0.72,
+      "atypical angina": 0.0,
+      "non-anginal pain": 0.04,
+      "ST depression (per mm)": 1.0
+    },
+    "va_25": {
+      "age (per 10 y)": 0.68,
+      "male": 0.4,
+      "typical angina": 0.72,
+      "atypical angina": 0.6,
+      "non-anginal pain": 0.2,
+      "ST depression (per mm)": 0.84
+    },
+    "va_50": {
+      "age (per 10 y)": 0.96,
+      "male": 0.6,
+      "typical angina": 0.88,
+      "atypical angina": 0.2,
+      "non-anginal pain": 0.2,
+      "ST depression (per mm)": 0.64
+    },
+    "va_100": {
+      "age (per 10 y)": 0.96,
+      "male": 0.88,
+      "typical angina": 1.0,
+      "atypical angina": 0.24,
+      "non-anginal pain": 0.04,
+      "ST depression (per mm)": 0.2
+    }
+  },
+  "c_mean_M2": {
+    "hungarian_25": 0.5602384187764416,
+    "hungarian_50": 0.5350769089703423,
+    "hungarian_100": 0.5692068685957048,
+    "va_25": 0.41726269352340817,
+    "va_50": 0.39861938498010674,
+    "va_100": 0.3910566525619077
+  },
+  "ridge_failed": 0,
+  "switzerland": {
+    "n": 123,
+    "prevalence": 0.9349593495934959,
+    "chol_zero": 123
+  },
+  "runtime_min": 62.00815818309784
+}

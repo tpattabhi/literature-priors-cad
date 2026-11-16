@@ -1,0 +1,54 @@
+{
+  "n_train": 242,
+  "n_test": 61,
+  "n_test_cad": 28,
+  "prev_all": 0.45874587458745875,
+  "n_all": 303,
+  "n_female": 97,
+  "n_male": 206,
+  "tableI_resid_sd": 0.3007124615968904,
+  "tableI_max_abs_resid": 0.5273687452928852,
+  "lit": {
+    "age (per 10 y)": 0.8786146812375147,
+    "male": 1.3168430664874082,
+    "typical angina": 4.760357458887748,
+    "atypical angina": 2.6730481991240698,
+    "non-anginal pain": 1.0161076578903325,
+    "ST depression (per mm)": 1.9344664494659274,
+    "any calcified vessel": 3.151810995907888,
+    "extra calcified vessels": 0.20662488760428518,
+    "fixed thallium defect": 2.087073659784666,
+    "reversible thallium defect": 4.188352828029227
+  },
+  "alpha_prior_mean": -0.5065612249795332,
+  "missing_ca": 4,
+  "missing_thal": 2,
+  "train_cad_rate_by_cp": {
+    "1": [
+      0.3181818181818182,
+      22
+    ],
+    "2": [
+      0.15384615384615385,
+      39
+    ],
+    "3": [
+      0.21311475409836064,
+      61
+    ],
+    "4": [
+      0.7083333333333334,
+      120
+    ]
+  },
+  "c_mean": 0.41854793848727656,
+  "c_lo": 0.22942022535927248,
+  "c_hi": 0.6150477004423438,
+  "loo_best": "M2",
+  "lc_max_rhat": 1.0163680560621777,
+  "lc_total_divergences": 0,
+  "lc_fits_with_divergences": 0,
+  "lc_min_bulk_ess": 896.8033298354801,
+  "lc_n_fits": 500,
+  "runtime_min": 20.693518634637197
+}
