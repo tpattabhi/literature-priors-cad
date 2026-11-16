@@ -40,8 +40,8 @@ This is a methods study that compares prior specifications. It does not develop 
 | 15 | Model output | Predicted probabilities. No classification threshold, except the 5%–50% range in the decision curves |
 | 16 | Differences between development and evaluation data | Sec. II-E and III-D: reduced predictors (no fluoroscopy or thallium); different prevalence (36%, 79% and 71% vs. 46%); Z-Alizadeh Sani has only age, sex and chest-pain type; see `results/characteristics.csv` |
 | 17 | Ethical approval | **AUTHOR**: the IRB determination is pending (see `../NEXT-STEPS.md`). The paper states that the data are public and de-identified (Sec. II-A) |
-| 18a | Funding | **AUTHOR** (none known) |
-| 18b | Conflicts of interest | **AUTHOR** |
+| 18a | Funding | None. This work received no funding |
+| 18b | Conflicts of interest | None declared |
 | 18c | Protocol | No protocol was prepared |
 | 18d | Registration | Not registered |
 | 18e | Data availability | Public: UCI Machine Learning Repository, doi:10.24432/C52P4X (CC BY 4.0); copies in `data/` |
