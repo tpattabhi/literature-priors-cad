@@ -26,26 +26,26 @@
   "check_keep_rate": {
     "hungarian_25": {
       "age (per 10 y)": 0.96,
-      "male": 0.96,
-      "typical angina": 0.6,
-      "atypical angina": 0.08,
-      "non-anginal pain": 0.72,
+      "male": 0.92,
+      "typical angina": 0.56,
+      "atypical angina": 0.72,
+      "non-anginal pain": 0.92,
       "ST depression (per mm)": 0.92
     },
     "hungarian_50": {
-      "age (per 10 y)": 0.96,
+      "age (per 10 y)": 0.92,
       "male": 1.0,
-      "typical angina": 0.2,
-      "atypical angina": 0.0,
-      "non-anginal pain": 0.56,
+      "typical angina": 0.52,
+      "atypical angina": 0.52,
+      "non-anginal pain": 0.8,
       "ST depression (per mm)": 0.84
     },
     "hungarian_100": {
       "age (per 10 y)": 0.88,
       "male": 1.0,
-      "typical angina": 0.08,
-      "atypical angina": 0.0,
-      "non-anginal pain": 0.48,
+      "typical angina": 0.2,
+      "atypical angina": 0.24,
+      "non-anginal pain": 0.36,
       "ST depression (per mm)": 0.84
     },
     "tehran_25": {
@@ -72,34 +72,34 @@
     "va_25": {
       "age (per 10 y)": 0.96,
       "male": 1.0,
-      "typical angina": 0.96,
-      "atypical angina": 0.84,
-      "non-anginal pain": 0.76,
-      "ST depression (per mm)": 0.8
+      "typical angina": 0.12,
+      "atypical angina": 0.64,
+      "non-anginal pain": 1.0,
+      "ST depression (per mm)": 0.84
     },
     "va_50": {
       "age (per 10 y)": 1.0,
       "male": 1.0,
-      "typical angina": 1.0,
-      "atypical angina": 0.36,
-      "non-anginal pain": 0.6,
+      "typical angina": 0.0,
+      "atypical angina": 0.52,
+      "non-anginal pain": 1.0,
       "ST depression (per mm)": 0.6
     },
     "va_100": {
       "age (per 10 y)": 1.0,
       "male": 1.0,
-      "typical angina": 1.0,
-      "atypical angina": 0.24,
-      "non-anginal pain": 0.56,
-      "ST depression (per mm)": 0.16
+      "typical angina": 0.0,
+      "atypical angina": 0.0,
+      "non-anginal pain": 1.0,
+      "ST depression (per mm)": 0.2
     }
   },
   "diag": {
     "n_fits": 1350,
-    "max_rhat": 1.0173302961645905,
+    "max_rhat": 1.0174840836311363,
     "divergences": 0,
     "fits_with_divergences": 0,
-    "min_bulk_ess": 580.9339086694362
+    "min_bulk_ess": 507.48874225378887
   },
-  "runtime_min": 172.66969494819642
+  "runtime_min": 84.27878008286159
 }

@@ -4,51 +4,51 @@
     "prevalence": 0.36177474402730375,
     "cad_rate_by_cp": {
       "1": [
-        0.36363636363636365,
-        11
+        0.6747967479674797,
+        123
       ],
       "2": [
-        0.0761904761904762,
-        105
-      ],
-      "3": [
         0.2037037037037037,
         54
       ],
+      "3": [
+        0.0761904761904762,
+        105
+      ],
       "4": [
-        0.6747967479674797,
-        123
+        0.36363636363636365,
+        11
       ]
     },
-    "literature_calculator_logloss_all": 0.9444502835780717,
-    "transported_logloss_all": 0.39885414747290915
+    "literature_calculator_logloss_all": 0.4276604681869639,
+    "transported_logloss_all": 0.39891486288299766
   },
   "va": {
     "n": 144,
     "prevalence": 0.7916666666666666,
     "cad_rate_by_cp": {
       "1": [
-        1.0,
-        3
+        0.8301886792452831,
+        106
       ],
       "2": [
-        0.5714285714285714,
-        7
-      ],
-      "3": [
         0.6785714285714286,
         28
       ],
+      "3": [
+        0.5714285714285714,
+        7
+      ],
       "4": [
-        0.8301886792452831,
-        106
+        1.0,
+        3
       ]
     },
-    "literature_calculator_logloss_all": 1.2612180131513844,
-    "transported_logloss_all": 0.484727019020807
+    "literature_calculator_logloss_all": 0.5899785999546024,
+    "transported_logloss_all": 0.4848174193703411
   },
   "diag": {
-    "max_rhat": 1.0148660443692632,
+    "max_rhat": 1.0141097130819723,
     "divergences": 0,
     "fits_with_divergences": 0,
     "n_fits": 900
@@ -57,59 +57,59 @@
     "hungarian_25": {
       "age (per 10 y)": 0.68,
       "male": 0.88,
-      "typical angina": 0.48,
-      "atypical angina": 0.0,
-      "non-anginal pain": 0.12,
-      "ST depression (per mm)": 1.0
+      "typical angina": 1.0,
+      "atypical angina": 0.28,
+      "non-anginal pain": 0.0,
+      "ST depression (per mm)": 0.96
     },
     "hungarian_50": {
       "age (per 10 y)": 0.72,
-      "male": 0.96,
-      "typical angina": 0.32,
-      "atypical angina": 0.0,
-      "non-anginal pain": 0.04,
+      "male": 0.88,
+      "typical angina": 1.0,
+      "atypical angina": 0.4,
+      "non-anginal pain": 0.0,
       "ST depression (per mm)": 1.0
     },
     "hungarian_100": {
-      "age (per 10 y)": 0.72,
+      "age (per 10 y)": 0.76,
       "male": 1.0,
-      "typical angina": 0.72,
-      "atypical angina": 0.0,
-      "non-anginal pain": 0.04,
+      "typical angina": 0.96,
+      "atypical angina": 0.2,
+      "non-anginal pain": 0.0,
       "ST depression (per mm)": 1.0
     },
     "va_25": {
       "age (per 10 y)": 0.68,
-      "male": 0.4,
-      "typical angina": 0.72,
-      "atypical angina": 0.6,
-      "non-anginal pain": 0.2,
-      "ST depression (per mm)": 0.84
+      "male": 0.44,
+      "typical angina": 0.8,
+      "atypical angina": 0.12,
+      "non-anginal pain": 0.48,
+      "ST depression (per mm)": 0.92
     },
     "va_50": {
       "age (per 10 y)": 0.96,
-      "male": 0.6,
-      "typical angina": 0.88,
-      "atypical angina": 0.2,
-      "non-anginal pain": 0.2,
-      "ST depression (per mm)": 0.64
+      "male": 0.56,
+      "typical angina": 0.72,
+      "atypical angina": 0.24,
+      "non-anginal pain": 0.24,
+      "ST depression (per mm)": 0.76
     },
     "va_100": {
       "age (per 10 y)": 0.96,
       "male": 0.88,
-      "typical angina": 1.0,
-      "atypical angina": 0.24,
-      "non-anginal pain": 0.04,
-      "ST depression (per mm)": 0.2
+      "typical angina": 0.6,
+      "atypical angina": 0.04,
+      "non-anginal pain": 0.24,
+      "ST depression (per mm)": 0.4
     }
   },
   "c_mean_M2": {
-    "hungarian_25": 0.5602384187764416,
-    "hungarian_50": 0.5350769089703423,
-    "hungarian_100": 0.5692068685957048,
-    "va_25": 0.41726269352340817,
-    "va_50": 0.39861938498010674,
-    "va_100": 0.3910566525619077
+    "hungarian_25": 0.5550859139727162,
+    "hungarian_50": 0.5259847199682718,
+    "hungarian_100": 0.5590140353506176,
+    "va_25": 0.417496432689965,
+    "va_50": 0.39773502304701225,
+    "va_100": 0.3922041707691065
   },
   "ridge_failed": 0,
   "switzerland": {
@@ -117,5 +117,5 @@
     "prevalence": 0.9349593495934959,
     "chol_zero": 123
   },
-  "runtime_min": 62.00815818309784
+  "runtime_min": 57.11196308135986
 }
