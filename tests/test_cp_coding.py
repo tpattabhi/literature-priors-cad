@@ -39,3 +39,11 @@ def test_cleveland_typical_angina_has_highest_cad_rate():
     rate = (d.num > 0).groupby(d.cp).mean()
     assert rate.idxmax() == 1 and rate.idxmin() != 1
     assert [int((d.num == k).sum()) for k in (1, 2, 3, 4)] == [55, 36, 35, 13]
+
+
+def test_recalibration_stays_finite_on_separated_subset():
+    p_fit = np.array([0.1, 0.2, 0.3, 0.7, 0.8, 0.9])
+    y_fit = np.array([0, 0, 0, 1, 1, 1])  # perfectly separated: the unpenalized slope diverges
+    q = T.recalibrate(p_fit, y_fit, np.array([0.05, 0.6, 0.95]), slope=True)
+    assert np.all((q >= 1e-6) & (q <= 1 - 1e-6))
+    assert np.isfinite(ac.pointwise_ll(np.array([1, 0, 0]), q)).all()

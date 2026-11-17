@@ -504,11 +504,13 @@ def recalibrate(p_fit, y_fit, p_new, slope=True):
     from scipy import optimize
 
     lp_fit, lp_new = (np.log(np.clip(q, 1e-6, 1 - 1e-6) / (1 - np.clip(q, 1e-6, 1 - 1e-6))) for q in (p_fit, p_new))
+    # If the fitting subset is perfectly separated, the unpenalized slope diverges and predictions saturate
+    # at 0 or 1. Outputs are clipped like the inputs, so a saturated wrong prediction costs log(1e6) = 13.8 nats.
     if slope:
         m = LogisticRegression(C=np.inf, max_iter=10_000).fit(lp_fit[:, None], y_fit)
-        return m.predict_proba(lp_new[:, None])[:, 1]
+        return np.clip(m.predict_proba(lp_new[:, None])[:, 1], 1e-6, 1 - 1e-6)
     a = optimize.minimize_scalar(lambda a: -np.sum(ac.pointwise_ll(y_fit, expit(a + lp_fit)))).x
-    return expit(a + lp_new)
+    return np.clip(expit(a + lp_new), 1e-6, 1 - 1e-6)
 
 
 def part_extra():

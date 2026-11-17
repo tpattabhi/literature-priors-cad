@@ -353,6 +353,35 @@ def pretest_calculator(d):
     return expit(lp.values.astype(float))
 
 
+def summarize_sites(P):
+    """Learning-curve summaries for the new centers from the saved per-patient points (no refitting)."""
+    allp = pd.concat(
+        [pd.read_csv(RES / "sites_points.csv"), pd.read_csv(RES / "sites_recal_points.csv"), P], ignore_index=True
+    )
+    models = [
+        "M0",
+        "M0b",
+        "M0c",
+        "M1",
+        "M2auto",
+        "M2check",
+        "M2h",
+        "M1CC",
+        "M2CC",
+        "ridge",
+        "literature",
+        "lit_recal",
+        "transported",
+        "transported_recal_int",
+    ]
+    summarize(allp, "M2", models, ["site", "n"]).to_csv(RES / "ext_sites_curve_vsM2.csv", index=False)
+    summarize(allp, "M2check", ["M0b", "M2auto", "M2"], ["site", "n"]).to_csv(
+        RES / "ext_sites_curve_check.csv", index=False
+    )
+    summarize(allp, "M2CC", ["M0b", "M1CC", "M2"], ["site", "n"]).to_csv(RES / "ext_sites_curve_cc.csv", index=False)
+    summarize(allp, "M2h", ["M0b", "M2"], ["site", "n"]).to_csv(RES / "ext_sites_curve_h.csv", index=False)
+
+
 def part_sites():
     out, pts, diags, keeps = {}, [], [], []
     # Cleveland models transported to Tehran: age, sex and chest pain only
@@ -468,31 +497,7 @@ def part_sites():
     P.to_csv(RES / "ext_sites_points.csv", index=False)
     pd.DataFrame(diags).to_csv(RES / "ext_sites_diagnostics.csv", index=False)
     pd.DataFrame(keeps).to_csv(RES / "ext_sites_check_keep.csv", index=False)
-    allp = pd.concat(
-        [pd.read_csv(RES / "sites_points.csv"), pd.read_csv(RES / "sites_recal_points.csv"), P], ignore_index=True
-    )
-    models = [
-        "M0",
-        "M0b",
-        "M0c",
-        "M1",
-        "M2auto",
-        "M2check",
-        "M2h",
-        "M1CC",
-        "M2CC",
-        "ridge",
-        "literature",
-        "lit_recal",
-        "transported",
-        "transported_recal_int",
-    ]
-    summarize(allp, "M2", models, ["site", "n"]).to_csv(RES / "ext_sites_curve_vsM2.csv", index=False)
-    summarize(allp, "M2check", ["M0b", "M2auto", "M2"], ["site", "n"]).to_csv(
-        RES / "ext_sites_curve_check.csv", index=False
-    )
-    summarize(allp, "M2CC", ["M0b", "M1CC", "M2"], ["site", "n"]).to_csv(RES / "ext_sites_curve_cc.csv", index=False)
-    summarize(allp, "M2h", ["M0b", "M2"], ["site", "n"]).to_csv(RES / "ext_sites_curve_h.csv", index=False)
+    summarize_sites(P)
     kp = pd.DataFrame(keeps)
     out["check_keep_rate"] = {
         f"{s}_{n}": {c[5:]: float(g[c].mean()) for c in g.columns if c.startswith("keep_") and g[c].notna().any()}
@@ -603,4 +608,10 @@ def part_kfix():
 
 
 if __name__ == "__main__":
-    {"cle": part_cle, "sites": part_sites, "tehw": part_tehw, "kfix": part_kfix}[sys.argv[1]]()
+    {
+        "cle": part_cle,
+        "sites": part_sites,
+        "sites-summary": lambda: summarize_sites(pd.read_csv(RES / "ext_sites_points.csv")),
+        "tehw": part_tehw,
+        "kfix": part_kfix,
+    }[sys.argv[1]]()
