@@ -47,6 +47,8 @@ uv run python make_figure.py          # Fig. 1
 
 The Swiss file is included for completeness but not analyzed (93% prevalence).
 
+**Chest-pain coding.** The UCI files store chest-pain type (`cp`) in reverse of `heart-disease.names`: code 4 is typical angina and code 1 is no chest pain. Detrano et al., *Circulation* 1986;73:970–977 (doi:10.1161/01.CIR.73.5.970), reports the same 303 Cleveland patients. Its Table 1 matches the file in 15 of 16 cells only with reversed codes (0 of 16 as documented), and its Table 8 logistic model of age, sex and chest pain is reproduced exactly only with reversed codes. `analysis.read_uci()` recodes `cp` as 5 − code for every UCI file; `UCI_CP_AS_DOCUMENTED=1` restores the documented coding. `tests/test_cp_coding.py` checks the recode against Detrano's Table 8.
+
 ## Reporting
 
 `TRIPOD-AI-checklist.md` maps each TRIPOD+AI item (Collins et al., BMJ 2024) to the paper or explains why it does not apply.

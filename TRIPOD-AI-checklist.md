@@ -19,7 +19,7 @@ This is a methods study that compares prior specifications. It does not develop 
 | 6a | Setting and centers | Cleveland Clinic Foundation; Hungarian Institute of Cardiology, Budapest; V.A. Medical Center, Long Beach, CA (`data/heart-disease.names`); Z-Alizadeh Sani: Tehran according to secondary sources (see `sources/uci_z_alizadeh_sani_page_2026-11-15.md`), not stated on the UCI page. Sec. II-A and II-E |
 | 6b | Eligibility | Referral for coronary angiography (Sec. II-A). New centers: complete cases for the five reduced-model predictors (Sec. II-E) |
 | 6c | Treatments | Not applicable (diagnostic, cross-sectional) |
-| 7 | Data preparation | Sec. II-A: coding into 18 columns, mode imputation of 4 calcification and 2 thallium values, centering on training means. Code: `code/analysis.py` (`encode`) and `code/transfer.py` (`encode_red`) |
+| 7 | Data preparation | Sec. II-A: chest-pain type recoded as 5 − code in every UCI file, because the files store it in reverse of their documentation (checked against Detrano et al. 1986, Tables 1 and 8; see README); coding into 18 columns, mode imputation of 4 calcification and 2 thallium values, centering on training means. Code: `code/analysis.py` (`encode`) and `code/transfer.py` (`encode_red`) |
 | 8a | Outcome | Sec. II-A: angiographic CAD, >50% diameter narrowing in any major vessel. Cross-sectional, no time horizon |
 | 8b | Outcome assessors | Not reported in the source data |
 | 8c | Blinding of outcome assessment | Not reported in the source data |
@@ -39,7 +39,7 @@ This is a methods study that compares prior specifications. It does not develop 
 | 14 | Fairness | Calibration by sex (Sec. III-B); no other fairness methods |
 | 15 | Model output | Predicted probabilities. No classification threshold, except the 5%–50% range in the decision curves |
 | 16 | Differences between development and evaluation data | Sec. II-E and III-D: reduced predictors (no fluoroscopy or thallium); different prevalence (36%, 79% and 71% vs. 46%); Z-Alizadeh Sani has only age, sex and chest-pain type; see `results/characteristics.csv` |
-| 17 | Ethical approval | **AUTHOR**: the IRB determination is pending (see `../NEXT-STEPS.md`). The paper states that the data are public and de-identified (Sec. II-A) |
+| 17 | Ethical approval | Secondary analysis of public, de-identified data (CC BY 4.0); no patient was contacted and no re-identification was attempted (Sec. II-A). The University of the Cumberlands IRB replied (16 Nov 2026) that it does not review projects that are not required for a course or degree; no formal determination was issued |
 | 18a | Funding | None. This work received no funding |
 | 18b | Conflicts of interest | None declared |
 | 18c | Protocol | No protocol was prepared |
