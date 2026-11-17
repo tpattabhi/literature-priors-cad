@@ -1,8 +1,8 @@
 # literature-priors-cad
 
-Code, data and results for the paper *Published Diagnostic Statistics as Bayesian Priors for Coronary Artery Disease: Prior-Data Conflict and a Small-Sample Window* (Tejas Tovinkere Pattabhi, University of the Cumberlands; ORCID [0009-0000-9364-9519](https://orcid.org/0009-0000-9364-9519)).
+Code, data and results for the paper *Published Diagnostic Statistics as Bayesian Priors for Coronary Artery Disease: A Small-Sample Window and a Reversed Code in the UCI Data* (Tejas Tovinkere Pattabhi, University of the Cumberlands; ORCID [0009-0000-9364-9519](https://orcid.org/0009-0000-9364-9519)).
 
-The study builds Bayesian logistic-regression priors from published diagnostic statistics (the Diamond–Forrester pretest table, the test likelihood ratios of Diamond et al. 1980, and the 2012 CAD Consortium model). It diagnoses why face-value priors conflict with a referral cohort, attenuates them with a learned factor, and measures their value as the training sample shrinks. The data are the Cleveland Clinic cohort (UCI Heart Disease) and three other centers: Budapest, Long Beach VA and the Z-Alizadeh Sani dataset.
+The study builds Bayesian logistic-regression priors from published diagnostic statistics (the Diamond–Forrester pretest table, the test likelihood ratios of Diamond et al. 1980, and the 2012 CAD Consortium model). It shows that the UCI files store chest-pain type in reverse of their documentation (checked against Detrano et al. 1986; see "Chest-pain coding" below), attenuates the published effects with a learned factor, and measures their value as the training sample shrinks. The data are the Cleveland Clinic cohort (UCI Heart Disease) and three other centers: Budapest, Long Beach VA and the Z-Alizadeh Sani dataset.
 
 ## Setup
 
